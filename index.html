@@ -17,50 +17,65 @@
     <main id="menu-principal">
         <h2>Conoce nuestro delicioso menú</h2>
 
-        <section class="categoria">
-            <h3>TORTAS SENCILLAS</h3>
-            <ul id="lista-tortas-sencillas"></ul>
-        </section>
-
-        <section class="categoria">
-            <h3>TORTAS ESPECIALES</h3>
-            <ul id="lista-tortas-especiales"></ul>
-        </section>
+        <nav id="category-nav">
+            <a href="#" class="nav-item active" data-target="tortas-sencillas">Sencillas</a>
+            <a href="#" class="nav-item" data-target="tortas-especiales">Especialidades</a>
+            <a href="#" class="nav-item" data-target="sincronizadas">Sincronizadas</a>
+            <a href="#" class="nav-item" data-target="tacos">Tacos</a>
+            <a href="#" class="nav-item" data-target="hamburguesas">Hamburguesas y Más</a>
+            <a href="#" class="nav-item" data-target="sandwich">Sandwich</a>
+            <a href="#" class="nav-item" data-target="tostadas">Tostadas</a>
+            <a href="#" class="nav-item" data-target="bebidas">Bebidas</a>
+            <a href="#" class="nav-item" data-target="extras">Extras</a>
+        </nav>
         
-        <section class="categoria">
-            <h3>SINCRONIZADAS</h3>
-            <ul id="lista-sincronizadas"></ul>
-        </section>
-        
-        <section class="categoria">
-            <h3>TACOS <span class="subtitulo">(Tacos con tortilla de harina estilo burrito)</span></h3>
-            <ul id="lista-tacos"></ul>
-        </section>
-        
-        <section class="categoria">
-            <h3>HAMBURGUESAS Y HOT DOGS</h3>
-            <ul id="lista-hamburguesas"></ul>
-        </section>
+        <div id="menu-content">
+            
+            <section id="tortas-sencillas" class="categoria active-menu">
+                <h3>TORTAS SENCILLAS</h3>
+                <ul id="lista-tortas-sencillas"></ul>
+            </section>
 
-        <section class="categoria">
-            <h3>SANDWICH</h3>
-            <ul id="lista-sandwich"></ul>
-        </section>
-        
-        <section class="categoria">
-            <h3>TOSTADAS</h3>
-            <ul id="lista-tostadas"></ul>
-        </section>
+            <section id="tortas-especiales" class="categoria">
+                <h3>TORTAS ESPECIALES</h3>
+                <ul id="lista-tortas-especiales"></ul>
+            </section>
+            
+            <section id="sincronizadas" class="categoria">
+                <h3>SINCRONIZADAS</h3>
+                <ul id="lista-sincronizadas"></ul>
+            </section>
+            
+            <section id="tacos" class="categoria">
+                <h3>TACOS <span class="subtitulo">(Tacos con tortilla de harina estilo burrito)</span></h3>
+                <ul id="lista-tacos"></ul>
+            </section>
+            
+            <section id="hamburguesas" class="categoria">
+                <h3>HAMBURGUESAS Y HOT DOGS</h3>
+                <ul id="lista-hamburguesas"></ul>
+            </section>
 
-        <section class="categoria">
-            <h3>BEBIDAS</h3>
-            <ul id="lista-bebidas"></ul>
-        </section>
+            <section id="sandwich" class="categoria">
+                <h3>SANDWICH</h3>
+                <ul id="lista-sandwich"></ul>
+            </section>
+            
+            <section id="tostadas" class="categoria">
+                <h3>TOSTADAS</h3>
+                <ul id="lista-tostadas"></ul>
+            </section>
 
-        <section class="categoria">
-            <h3>INGREDIENTES EXTRAS</h3>
-            <ul id="lista-extras"></ul>
-        </section>
+            <section id="bebidas" class="categoria">
+                <h3>BEBIDAS</h3>
+                <ul id="lista-bebidas"></ul>
+            </section>
+
+            <section id="extras" class="categoria">
+                <h3>INGREDIENTES EXTRAS</h3>
+                <ul id="lista-extras"></ul>
+            </section>
+        </div>
 
     </main>
     
@@ -71,6 +86,7 @@
         <button id="prev-btn" aria-label="Imagen Anterior">❮</button>
         <button id="next-btn" aria-label="Imagen Siguiente">❯</button>
     </section>
+    
     <footer id="informacion-contacto">
         <p><strong>HORARIOS DE SERVICIO:</strong> Lunes a Sábado de 9am a 5:30pm</p>
         <p>¡ENCUÉNTRANOS EN RAPPI!</p>

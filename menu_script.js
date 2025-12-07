@@ -8,7 +8,7 @@ const formatChicaGrande = item => {
 };
 
 const formatEspecial = item => {
-    const desc = item.descripcion.includes('(Grande') ? item.descripcion : `${item.descripcion} (Precio Grande No Especificado)`;
+    const desc = item.descripcion.includes('(Grande') ? item.descripcion : `${item.descripcion}`;
     return `<span class="item-nombre"><strong>${item.nombre}</strong> <span class="item-precio">$${item.precio}</span></span> <span class="item-descripcion">${desc}</span>`;
 };
 

@@ -43,11 +43,14 @@ header {
 h1, h2 {
     color: var(--color-primary); 
     text-transform: uppercase;
-    font-weight: 900; 
+    font-weight: 900;
     margin-top: 0;
-}
+} 
 h1 { font-size: 2.5em; }
-h2 { font-size: 1.8em; margin-top: 20px; }
+h2 { font-size: 1.8em;
+    margin-top: 20px;
+    text-align: center; /* 💡 LÍNEA AÑADIDA */
+}
 
 h3 {
     border-bottom: 3px solid var(--color-secondary); 

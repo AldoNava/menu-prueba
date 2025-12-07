@@ -11,7 +11,7 @@ async function cargarMenu() {
         const menuData = await response.json();
 
         // ----------------------------------------------------
-        // Definición de formatos de lista según la estructura del JSON
+        // Definición de formatos de lista
         
         // Formato para items con precio chica y grande (ej. TORTAS SENCILLAS)
         const formatChicaGrande = item => {
@@ -20,7 +20,9 @@ async function cargarMenu() {
 
         // Formato para items con nombre, precio y descripción (ej. TORTAS ESPECIALES)
         const formatEspecial = item => {
-            return `<span class="item-nombre"><strong>${item.nombre}</strong> <span class="item-precio">$${item.precio}</span></span> <span class="item-descripcion">${item.descripcion}</span>`;
+            // Aseguramos que la descripción de las Especiales siempre incluya el precio grande
+            const desc = item.descripcion.includes('(Grande') ? item.descripcion : `${item.descripcion} (Precio Grande No Especificado)`;
+            return `<span class="item-nombre"><strong>${item.nombre}</strong> <span class="item-precio">$${item.precio}</span></span> <span class="item-descripcion">${desc}</span>`;
         };
 
         // Formato simple para items con nombre y precio (ej. TACOS, EXTRAS)
@@ -40,27 +42,22 @@ async function cargarMenu() {
 
         dibujarSeccion(menuData.TORTAS_SENCILLAS, 'lista-tortas-sencillas', formatChicaGrande);
         dibujarSeccion(menuData.TORTAS_ESPECIALES, 'lista-tortas-especiales', formatEspecial);
-        
-        // Usando el formato simple para el resto de secciones similares:
         dibujarSeccion(menuData.SINCRONIZADAS, 'lista-sincronizadas', formatSimple);
         dibujarSeccion(menuData.TACOS, 'lista-tacos', formatSimple);
         dibujarSeccion(menuData.HAMBURGUESAS, 'lista-hamburguesas', formatSimple);
         dibujarSeccion(menuData.SANDWICH, 'lista-sandwich', formatSimple);
         dibujarSeccion(menuData.TOSTADAS, 'lista-tostadas', formatSimple);
-
-        // Formato específico para bebidas y extras
         dibujarSeccion(menuData.BEBIDAS, 'lista-bebidas', formatBebidas);
         dibujarSeccion(menuData.EXTRAS, 'lista-extras', formatSimple);
 
 
     } catch (error) {
         console.error('Error al cargar el menú:', error);
-        // Mensaje de error visible para el usuario si falla la carga
         document.getElementById('menu-principal').innerHTML = '<p class="error-msg">Error al cargar el menú. Por favor, asegúrate de que el archivo menu_data.json exista y sea válido.</p>';
     }
 }
 
-// Función auxiliar que toma la lista de items, el ID del contenedor y la función de formato
+// Función auxiliar que construye los elementos LI
 function dibujarSeccion(items, targetId, formatter) {
     const ul = document.getElementById(targetId);
     if (!ul || !items) return; 
@@ -72,5 +69,70 @@ function dibujarSeccion(items, targetId, formatter) {
     });
 }
 
-// Ejecuta la carga del menú cuando el navegador esté listo
-cargarMenu();
+// =================================================================
+// Lógica para el Carrusel de Imágenes
+// =================================================================
+
+function inicializarCarrusel() {
+    // Array de nombres de archivo de las 8 fotos de muestra (deben estar en img/)
+    const imageNames = [
+        'la-tortuga-fotos-1.jpg',
+        'la-tortuga-fotos-2.jpg',
+        'la-tortuga-fotos-3.jpg',
+        'la-tortuga-fotos-4.jpg',
+        'la-tortuga-fotos-5.jpg',
+        'la-tortuga-fotos-6.jpg',
+        'la-tortuga-fotos-7.jpg',
+        'la-tortuga-fotos-8.jpg'
+    ];
+
+    const carousel = document.getElementById('image-carousel');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    let currentIndex = 0;
+
+    // 1. Cargar todas las imágenes
+    imageNames.forEach((name, index) => {
+        const img = document.createElement('img');
+        img.src = `img/${name}`;
+        img.alt = `Foto de Tortería La Tortuga ${index + 1}`;
+        img.classList.add('carousel-item');
+        carousel.appendChild(img);
+    });
+
+    const items = document.querySelectorAll('.carousel-item');
+    if (items.length === 0) return;
+
+    // 2. Función para mostrar la imagen actual
+    function updateCarousel() {
+        items.forEach(item => item.classList.remove('active'));
+        items[currentIndex].classList.add('active');
+    }
+
+    // 3. Manejar los botones de navegación
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % items.length;
+        updateCarousel();
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateCarousel();
+    }
+
+    // 4. Asignar Eventos y Autocarrusel
+    nextBtn.addEventListener('click', nextImage);
+    prevBtn.addEventListener('click', prevImage);
+    
+    // Carrusel automático cada 5 segundos
+    setInterval(nextImage, 5000); 
+
+    // Inicializar mostrando la primera imagen
+    updateCarousel(); 
+}
+
+// Ejecuta la carga del menú y el carrusel cuando el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', () => {
+    cargarMenu();
+    inicializarCarrusel();
+});

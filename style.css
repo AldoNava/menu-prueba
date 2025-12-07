@@ -9,7 +9,7 @@ body {
 }
 
 main {
-    padding: 20px 0; /* Ajuste el padding para que el menú de tabs sea visible */
+    padding: 20px 0;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -21,8 +21,9 @@ header {
     border-bottom: 2px solid #ccc;
 }
 
+/* 🖼️ AJUSTE DEL TAMAÑO DEL LOGO */
 .logo {
-    max-width: 150px;
+    max-width: 250px; /* Incrementamos el tamaño del logo */
     height: auto;
     margin-bottom: 15px;
 }
@@ -39,7 +40,7 @@ h3 {
     padding-bottom: 5px;
     margin-top: 30px;
     color: #555;
-    text-align: center; /* Centrar el título de la categoría */
+    text-align: center; 
 }
 
 .subtitulo {
@@ -53,7 +54,7 @@ h3 {
 /* ------------------------------ */
 #category-nav {
     display: flex;
-    overflow-x: auto; /* Permite desplazamiento horizontal en móviles */
+    overflow-x: auto; 
     white-space: nowrap;
     background-color: #f0f0f0;
     border-bottom: 2px solid #a00;
@@ -81,24 +82,24 @@ h3 {
 .nav-item.active {
     background-color: #a00;
     color: white;
-    border-bottom: 3px solid #ff9900; /* Borde de acento para la pestaña activa */
+    border-bottom: 3px solid #ff9900; 
 }
 
 /* ------------------------------ */
-/* Lógica de Visibilidad */
+/* Lógica de Visibilidad de Menú */
 /* ------------------------------ */
 
 #menu-content {
-    padding: 0 20px; /* Padding para el contenido dentro de la main */
+    padding: 0 20px; 
 }
 
 .categoria {
-    display: none; /* Oculta todas las categorías por defecto */
+    display: none; 
     animation: fadeIn 0.5s;
 }
 
 .categoria.active-menu {
-    display: block; /* Muestra solo la categoría con la clase active-menu */
+    display: block; 
 }
 
 @keyframes fadeIn {
@@ -141,68 +142,98 @@ h3 {
     margin-top: 5px;
 }
 
-/* ------------------------------ */
-/* Estilos para el Carrusel */
-/* ------------------------------ */
+/* --------------------------------- */
+/* 🖼️ ESTILOS DEL CARRUSEL 3 IMÁGENES */
+/* --------------------------------- */
+
 #carousel-container {
     position: relative; 
-    max-width: 600px;
-    height: 400px; 
+    max-width: 700px; /* Aumentamos el tamaño para que quepan las 3 imágenes */
+    height: 350px;
     margin: 40px auto;
     overflow: hidden; 
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 #image-carousel {
-    display: block;
+    display: flex;
+    position: relative;
     width: 100%;
     height: 100%;
+    /* Habilitamos la perspectiva 3D */
+    transform-style: preserve-3d; 
+    perspective: 1000px;
+    /* Transición para el movimiento */
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-item {
-    width: 100%;
+    min-width: 100%; /* Cada elemento intenta ocupar el 100% (será sobreescrito por el JS/Transform) */
     height: 100%;
-    position: absolute; 
+    position: absolute;
     top: 0;
     left: 0;
-    display: none; 
-    object-fit: cover; 
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out; 
+    object-fit: cover;
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.5s, transform 0.5s, box-shadow 0.5s;
+    border: 3px solid transparent;
+    border-radius: 8px;
 }
 
+/* Clase para la imagen activa (centro) */
 .carousel-item.active {
-    display: block; 
     opacity: 1;
+    z-index: 10;
+    /* Movemos el elemento al centro (se manejará con JS) */
+    transform: translateX(0) scale(1.1); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border: 3px solid #a00; /* Borde rojo para destacar */
 }
+
+/* Clase para la imagen izquierda (anterior) */
+.carousel-item.prev {
+    opacity: 0.6;
+    z-index: 5;
+    /* Posición: Izquierda, Escala: Reducida, Transformación 3D para darle profundidad */
+    transform: translateX(-50%) scale(0.85) translateZ(-50px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+/* Clase para la imagen derecha (próxima) */
+.carousel-item.next {
+    opacity: 0.6;
+    z-index: 5;
+    /* Posición: Derecha, Escala: Reducida, Transformación 3D para darle profundidad */
+    transform: translateX(50%) scale(0.85) translateZ(-50px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
 
 /* Estilos para los botones de navegación del carrusel */
 #prev-btn, #next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 15px 20px; /* Botones más grandes */
     cursor: pointer;
-    font-size: 1.5rem;
-    z-index: 10;
+    font-size: 2rem;
+    z-index: 20; /* Asegurar que estén por encima de las imágenes */
     border-radius: 50%;
     line-height: 1;
 }
 
 #prev-btn {
-    left: 10px;
+    left: 0;
 }
 
 #next-btn {
-    right: 10px;
+    right: 0;
 }
 
 #prev-btn:hover, #next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 
@@ -222,11 +253,4 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
-}
-
-/* Media Query para tabletas y escritorios */
-@media (min-width: 600px) {
-    .categoria li {
-        padding: 10px 15px;
-    }
 }

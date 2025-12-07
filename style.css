@@ -7,12 +7,12 @@
 
 :root {
     /* Paleta de Colores */
-    --color-primary: #A00000;      /* Rojo oscuro, usado en títulos y acentos */
-    --color-secondary: #FFB703;    /* Dorado/Mostaza, usado para resaltar el precio y el activo */
-    --color-background: #F5F5F5;   /* Gris claro de fondo */
-    --color-content-bg: #FFFFFF;   /* Blanco puro para el contenedor principal */
-    --color-text: #333333;         /* Texto principal */
-    --color-light-text: #777;      /* Descripciones */
+    --color-primary: #A00000;      
+    --color-secondary: #FFB703;    
+    --color-background: #F5F5F5;   
+    --color-content-bg: #FFFFFF;   
+    --color-text: #333333;         
+    --color-light-text: #777;      
 
     /* Tipografía */
     --font-primary: 'Montserrat', sans-serif;
@@ -22,25 +22,24 @@ body {
     font-family: var(--font-primary);
     margin: 0;
     padding: 0;
-    background-color: var(--color-background); /* Fondo general gris claro */
+    background-color: var(--color-background); 
     color: var(--color-text);
     line-height: 1.6;
 }
 
 main {
-    /* Contenedor principal para el contenido */
     max-width: 1200px;
     margin: 0 auto;
     padding: 30px 20px; 
-    background-color: var(--color-content-bg); /* Contenido en blanco */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil para levantar la página */
+    background-color: var(--color-content-bg); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
 }
 
 header {
     text-align: center;
     padding: 30px 20px;
     background-color: var(--color-background);
-    border-bottom: 5px solid var(--color-primary); /* Línea de división robusta */
+    border-bottom: 5px solid var(--color-primary); 
     margin-bottom: 20px;
 }
 
@@ -48,7 +47,7 @@ header {
 h1, h2 {
     color: var(--color-primary); 
     text-transform: uppercase;
-    font-weight: 900; /* Extra bold para impacto */
+    font-weight: 900; 
     margin-top: 0;
 }
 h1 {
@@ -60,7 +59,7 @@ h2 {
 }
 
 h3 {
-    border-bottom: 3px solid var(--color-secondary); /* Separador de sección en dorado */
+    border-bottom: 3px solid var(--color-secondary); 
     padding-bottom: 8px;
     margin-top: 40px;
     color: var(--color-primary);
@@ -90,12 +89,12 @@ h3 {
 #category-nav {
     display: flex;
     flex-wrap: wrap; 
-    background-color: var(--color-text); /* Fondo oscuro para el menú de navegación */
+    background-color: var(--color-text); 
     border-bottom: 3px solid var(--color-secondary);
     padding: 0; 
     justify-content: center; 
     border-radius: 5px;
-    overflow: hidden; /* Para que los ítems redondeados queden bien */
+    overflow: hidden; 
 }
 
 .nav-item {
@@ -104,7 +103,7 @@ h3 {
     text-decoration: none;
     color: white;
     font-weight: 600;
-    border-right: 1px solid rgba(255, 255, 255, 0.1); /* Separador muy sutil */
+    border-right: 1px solid rgba(255, 255, 255, 0.1); 
     transition: background-color 0.3s;
     flex-grow: 1; 
     text-align: center;
@@ -118,14 +117,11 @@ h3 {
 
 .nav-item.active {
     background-color: var(--color-primary);
-    color: var(--color-secondary); /* Texto resaltado en dorado */
+    color: var(--color-secondary); 
     border-bottom: 3px solid var(--color-secondary) !important;
 }
 
-/* ------------------------------ */
-/* 3. CONTENIDO DEL MENÚ (LISTAS) */
-/* ------------------------------ */
-
+/* Lógica de Visibilidad de Menú */
 #menu-content {
     padding: 0 20px; 
 }
@@ -144,6 +140,7 @@ h3 {
     to { opacity: 1; }
 }
 
+/* Estilos de las Listas de Menú */
 .categoria ul {
     list-style: none;
     padding: 0;
@@ -167,7 +164,7 @@ h3 {
 }
 
 .item-precio {
-    color: var(--color-secondary); /* Precio en dorado */
+    color: var(--color-secondary); 
     font-weight: 900;
     white-space: nowrap; 
     text-align: right;
@@ -183,11 +180,9 @@ h3 {
 }
 
 
-/* --------------------------------- */
-/* 4. ESTILOS DEL CARRUSEL Y MAPA */
-/* --------------------------------- */
-
-/* Carrusel - Mantener la corrección de 3D */
+/* ---------------------------------------------------- */
+/* 4. ESTILOS DEL CARRUSEL (CORREGIDO) */
+/* ---------------------------------------------------- */
 
 #carousel-container {
     max-width: 90%; 
@@ -197,41 +192,50 @@ h3 {
     position: relative; 
 }
 
+#image-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d; 
+    perspective: 1000px;
+}
+
 .carousel-item {
-    /*... estilos del carrusel ya corregidos ...*/
     width: 100%;
     height: 100%;
     position: absolute; 
     top: 0;
     left: 0;
-    object-fit: cover;
+    object-fit: cover; /* Mantiene la imagen sin deformarse dentro del área */
     opacity: 0; 
     transition: opacity 0.5s, transform 0.5s, box-shadow 0.5s;
     border: 3px solid transparent;
     border-radius: 8px;
-    transform: translateX(0) scale(0.85) translateZ(-100px); 
+    /* Los elementos ocultos deben estar en una posición neutral */
+    transform: translateX(0) scale(1) translateZ(-100px); 
 }
 
 .carousel-item.active {
     opacity: 1;
     z-index: 10;
-    transform: translateX(0) scale(1.1); 
+    /* Centrado, ligeramente más grande (1.05) */
+    transform: translateX(0) scale(1.05) translateZ(1px); 
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    border: 3px solid var(--color-primary); /* Borde activo en rojo */
+    border: 3px solid var(--color-primary); 
 }
 
 .carousel-item.prev {
     opacity: 0.7;
     z-index: 5;
-    transform: translateX(-100%) scale(0.85) translateZ(-50px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    /* Movido un 30% a la izquierda (permitiendo que se vea) */
+    transform: translateX(-30%) scale(0.85) translateZ(-10px); 
 }
 
 .carousel-item.next {
     opacity: 0.7;
     z-index: 5;
-    transform: translateX(100%) scale(0.85) translateZ(-50px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    /* Movido un 30% a la derecha (permitiendo que se vea) */
+    transform: translateX(30%) scale(0.85) translateZ(-10px); 
 }
 
 /* Botones del carrusel */
@@ -239,7 +243,7 @@ h3 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(160, 0, 0, 0.7); /* Rojo semitransparente */
+    background-color: rgba(160, 0, 0, 0.7); 
     color: white;
     border: none;
     padding: 15px 20px; 
@@ -255,11 +259,13 @@ h3 {
 #next-btn { right: 0; }
 
 #prev-btn:hover, #next-btn:hover {
-    background-color: var(--color-primary); /* Rojo oscuro en hover */
+    background-color: var(--color-primary); 
 }
 
 
+/* ------------------------------ */
 /* Estilos para el Mapa (iFrame) */
+/* ------------------------------ */
 .map-container {
     max-width: 1200px;
     margin: 40px auto;
@@ -275,7 +281,7 @@ h3 {
 .map-container iframe {
     display: block;
     width: 100%;
-    border: 5px solid var(--color-secondary) !important; /* Borde dorado alrededor del mapa */
+    border: 5px solid var(--color-secondary) !important; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
@@ -294,7 +300,7 @@ h3 {
     main {
         padding: 0;
         margin: 0;
-        box-shadow: none; /* Quitamos sombra en móvil para abarcar el ancho completo */
+        box-shadow: none; 
     }
 
     header {
@@ -339,11 +345,12 @@ h3 {
         font-size: 1.2rem;
     }
 
+    /* Corrección de carrusel para móvil */
     .carousel-item.prev {
-        transform: translateX(-80%) scale(0.7) translateZ(-50px);
+        transform: translateX(-40%) scale(0.7) translateZ(-50px); /* Movido un poco menos */
     }
     .carousel-item.next {
-        transform: translateX(80%) scale(0.7) translateZ(-50px);
+        transform: translateX(40%) scale(0.7) translateZ(-50px); /* Movido un poco menos */
     }
     
     /* Ajuste de listas en móvil */

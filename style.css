@@ -9,7 +9,6 @@ body {
 }
 
 main {
-    /* Aumentamos el ancho máximo para pantallas grandes */
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px 0; 
@@ -22,7 +21,7 @@ header {
     border-bottom: 2px solid #ccc;
 }
 
-/* AJUSTE DEL TAMAÑO DEL LOGO */
+/* 🖼️ AJUSTE DEL TAMAÑO DEL LOGO */
 .logo {
     max-width: 250px; 
     height: auto;
@@ -51,15 +50,15 @@ h3 {
 }
 
 /* --------------------------------- */
-/* 🍔 ESTILOS DEL MENÚ HORIZONTAL (TABS) */
+/* 🍔 Estilos del Menú Horizontal (Tabs) */
 /* --------------------------------- */
 #category-nav {
     display: flex;
-    flex-wrap: wrap; /* Permitir que los elementos se envuelvan a la siguiente línea en vez de scroll */
+    flex-wrap: wrap; 
     background-color: #f0f0f0;
     border-bottom: 2px solid #a00;
-    padding: 0; /* Quitamos padding aquí para usarlo en el ítem */
-    justify-content: center; /* Centrar las opciones en escritorio */
+    padding: 0; 
+    justify-content: center; 
 }
 
 .nav-item {
@@ -69,20 +68,18 @@ h3 {
     color: #333;
     font-weight: bold;
     border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd; /* Añadimos borde inferior para el modo wrap */
+    border-bottom: 1px solid #ddd; 
     transition: background-color 0.3s;
-    flex-grow: 1; /* Permite que crezcan un poco para llenar el espacio */
+    flex-grow: 1; 
     text-align: center;
 }
 
-/* Corregimos el borde del último ítem en modo desktop */
 #category-nav a:last-child {
     border-right: 1px solid #ddd;
 }
 #category-nav a:last-child:nth-child(2n) {
     border-right: none;
 }
-
 
 .nav-item:hover {
     background-color: #e0e0e0;
@@ -94,10 +91,7 @@ h3 {
     border-bottom: 3px solid #ff9900 !important;
 }
 
-/* ------------------------------ */
 /* Lógica de Visibilidad de Menú */
-/* ------------------------------ */
-
 #menu-content {
     padding: 0 20px; 
 }
@@ -151,12 +145,12 @@ h3 {
     margin-top: 5px;
 }
 
-/* --------------------------------- */
-/* 🖼️ ESTILOS DEL CARRUSEL 3 IMÁGENES */
-/* --------------------------------- */
+/* ---------------------------------------------------- */
+/* 🖼️ ESTILOS DEL CARRUSEL 3 IMÁGENES (CORRECCIÓN) */
+/* ---------------------------------------------------- */
 
 #carousel-container {
-    max-width: 90%; /* Ajuste a porcentaje para móviles */
+    max-width: 90%; 
     height: 350px;
     margin: 40px auto;
     overflow: hidden; 
@@ -164,7 +158,7 @@ h3 {
 }
 
 #image-carousel {
-    display: flex;
+    display: block; /* Vuelve a block para mejor control de position: absolute */
     position: relative;
     width: 100%;
     height: 100%;
@@ -174,9 +168,9 @@ h3 {
 }
 
 .carousel-item {
-    min-width: 100%;
+    width: 100%;
     height: 100%;
-    position: absolute;
+    position: absolute; 
     top: 0;
     left: 0;
     object-fit: cover;
@@ -184,29 +178,35 @@ h3 {
     transition: opacity 0.5s, transform 0.5s, box-shadow 0.5s;
     border: 3px solid transparent;
     border-radius: 8px;
+    /* Necesario para que las imágenes estén en el centro cuando no son active/prev/next */
+    transform: translateX(0) scale(0.85) translateZ(-100px); 
 }
 
 .carousel-item.active {
     opacity: 1;
     z-index: 10;
+    /* Posición central con el 100% de la opacidad y escala */
     transform: translateX(0) scale(1.1); 
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     border: 3px solid #a00;
 }
 
 .carousel-item.prev {
-    opacity: 0.6;
+    opacity: 0.7;
     z-index: 5;
-    transform: translateX(-50%) scale(0.85) translateZ(-50px);
+    /* Movido a la izquierda de la vista. Se usa 100% para separar. */
+    transform: translateX(-100%) scale(0.85) translateZ(-50px);
     box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
 
 .carousel-item.next {
-    opacity: 0.6;
+    opacity: 0.7;
     z-index: 5;
-    transform: translateX(50%) scale(0.85) translateZ(-50px);
+    /* Movido a la derecha de la vista. Se usa 100% para separar. */
+    transform: translateX(100%) scale(0.85) translateZ(-50px);
     box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
+
 
 /* Botones del carrusel */
 #prev-btn, #next-btn {
@@ -241,7 +241,7 @@ h3 {
 /* 📍 Estilos para el Mapa (iFrame) */
 /* ------------------------------ */
 .map-container {
-    max-width: 1200px; /* Incrementado para coincidir con main */
+    max-width: 1200px; 
     margin: 40px auto;
     padding: 0 20px;
     text-align: center;
@@ -270,25 +270,21 @@ h3 {
 /* ------------------------------ */
 @media (max-width: 600px) {
     
-    /* Evitar que el contenedor principal cause scroll */
     main {
         padding: 0;
         margin: 0;
     }
 
-    /* Ajuste para el contenido del menú */
     #menu-content {
-        padding: 0 10px; /* Reducimos el padding lateral en móviles */
+        padding: 0 10px; 
     }
 
-    /* Botones de navegación horizontal (Tabs) en móviles */
     #category-nav {
-        justify-content: start; /* Alinear a la izquierda */
+        justify-content: start; 
         padding: 0 5px;
     }
     
     .nav-item {
-        /* En pantallas pequeñas, forzamos 3 items por fila */
         flex-basis: calc(33.333% - 2px); 
         box-sizing: border-box;
         font-size: 0.9em;
@@ -296,21 +292,25 @@ h3 {
         border-bottom: 1px solid #ddd;
     }
     
-    /* El último elemento no debe tener borde derecho en la fila */
     .nav-item:nth-child(3n) {
         border-right: none;
     }
 
-    /* Ajuste del carrusel en móviles */
     #carousel-container {
-        height: 300px; /* Altura más pequeña para móviles */
+        height: 250px; /* Reducción adicional en móviles */
         max-width: 95%;
     }
 
-    /* Ajuste de botones del carrusel */
     #prev-btn, #next-btn {
-        padding: 10px 15px;
-        font-size: 1.5rem;
+        padding: 8px 10px;
+        font-size: 1.2rem;
+    }
+
+    .carousel-item.prev {
+        transform: translateX(-80%) scale(0.7) translateZ(-50px);
+    }
+    .carousel-item.next {
+        transform: translateX(80%) scale(0.7) translateZ(-50px);
     }
 
 }

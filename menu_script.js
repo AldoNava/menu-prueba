@@ -13,25 +13,20 @@ async function cargarMenu() {
         // ----------------------------------------------------
         // Definición de formatos de lista
         
-        // Formato para items con precio chica y grande (ej. TORTAS SENCILLAS)
         const formatChicaGrande = item => {
             return `<span class="item-nombre">${item.nombre}</span> <span class="item-precio">$${item.precio_chica}</span> (Grande $${item.precio_grande})`;
         };
 
-        // Formato para items con nombre, precio y descripción (ej. TORTAS ESPECIALES)
         const formatEspecial = item => {
-            // Aseguramos que la descripción de las Especiales siempre incluya el precio grande
             const desc = item.descripcion.includes('(Grande') ? item.descripcion : `${item.descripcion} (Precio Grande No Especificado)`;
             return `<span class="item-nombre"><strong>${item.nombre}</strong> <span class="item-precio">$${item.precio}</span></span> <span class="item-descripcion">${desc}</span>`;
         };
 
-        // Formato simple para items con nombre y precio (ej. TACOS, EXTRAS)
         const formatSimple = item => {
              let descripcion = item.descripcion ? `<span class="item-descripcion">${item.descripcion}</span>` : '';
              return `<span class="item-nombre">${item.nombre}</span> <span class="item-precio">$${item.precio}</span> ${descripcion}`;
         };
         
-        // Formato para BEBIDAS (maneja tamaño)
         const formatBebidas = item => {
             let tamaño = item.tamaño ? `<span class="item-tamaño">${item.tamaño}</span>` : '';
             return `<span class="item-nombre">${item.nombre}</span> <span class="item-precio">$${item.precio}</span> ${tamaño}`;
@@ -70,11 +65,39 @@ function dibujarSeccion(items, targetId, formatter) {
 }
 
 // =================================================================
-// Lógica para el Carrusel de Imágenes
+// 🍔 Lógica para la Navegación por Tabs (Menú Horizontal)
 // =================================================================
+function setupCategoryTabs() {
+    const navItems = document.querySelectorAll('#category-nav .nav-item');
+    const menuSections = document.querySelectorAll('#menu-content .categoria');
 
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = e.currentTarget.getAttribute('data-target');
+
+            // 1. Manejar la clase activa de la navegación (Tabs)
+            navItems.forEach(nav => nav.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+
+            // 2. Manejar la visibilidad del contenido (Secciones)
+            menuSections.forEach(section => {
+                section.classList.remove('active-menu');
+            });
+
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active-menu');
+            }
+        });
+    });
+}
+
+
+// =================================================================
+// 🖼️ Lógica para el Carrusel de Imágenes
+// =================================================================
 function inicializarCarrusel() {
-    // Array de nombres de archivo de las 8 fotos de muestra (deben estar en img/)
     const imageNames = [
         'la-tortuga-fotos-1.jpg',
         'la-tortuga-fotos-2.jpg',
@@ -124,7 +147,6 @@ function inicializarCarrusel() {
     nextBtn.addEventListener('click', nextImage);
     prevBtn.addEventListener('click', prevImage);
     
-    // Carrusel automático cada 5 segundos
     setInterval(nextImage, 5000); 
 
     // Inicializar mostrando la primera imagen
@@ -135,4 +157,5 @@ function inicializarCarrusel() {
 document.addEventListener('DOMContentLoaded', () => {
     cargarMenu();
     inicializarCarrusel();
+    setupCategoryTabs(); // <-- Añadido el setup de las pestañas
 });

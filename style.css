@@ -94,7 +94,10 @@ h3 {
     padding: 0; 
     justify-content: center; 
     border-radius: 5px;
-    overflow: hidden; 
+    overflow: hidden;
+    position: sticky; /* O position: fixed si prefieres que ignore el scroll */
+    top: 0; /* Lo mantiene pegado a la parte superior de la ventana */
+    z-index: 100; /* Asegura que esté por encima de todo el contenido */
 }
 
 .nav-item {
@@ -318,6 +321,9 @@ h3 {
     #category-nav {
         padding: 0;
         border-radius: 0;
+        position: sticky; /* O position: fixed si prefieres que ignore el scroll */
+        top: 0; /* Lo mantiene pegado a la parte superior de la ventana */
+        z-index: 100; /* Asegura que esté por encima de todo el contenido */
     }
     
     /* 3 ítems por fila en móviles */

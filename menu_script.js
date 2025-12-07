@@ -1,18 +1,6 @@
 // 1. Define la URL del archivo JSON
 const dataURL = 'menu_data.json';
 
-// Función auxiliar que construye los elementos LI
-function dibujarSeccion(items, targetId, formatter) {
-    const ul = document.getElementById(targetId);
-    if (!ul || !items) return; 
-
-    items.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = formatter(item); 
-        ul.appendChild(li);
-    });
-}
-
 // ----------------------------------------------------
 // Definición de formatos de lista
 const formatChicaGrande = item => {
@@ -33,6 +21,18 @@ const formatBebidas = item => {
     let tamaño = item.tamaño ? `<span class="item-tamaño">${item.tamaño}</span>` : '';
     return `<span class="item-nombre">${item.nombre}</span> <span class="item-precio">$${item.precio}</span> ${tamaño}`;
 };
+
+// Función auxiliar que construye los elementos LI
+function dibujarSeccion(items, targetId, formatter) {
+    const ul = document.getElementById(targetId);
+    if (!ul || !items) return; 
+
+    items.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = formatter(item); 
+        ul.appendChild(li);
+    });
+}
 
 // Función principal para cargar y dibujar el menú
 async function cargarMenu() {
@@ -73,11 +73,9 @@ function setupCategoryTabs() {
             e.preventDefault();
             const targetId = e.currentTarget.getAttribute('data-target');
 
-            // 1. Manejar la clase activa de la navegación (Tabs)
             navItems.forEach(nav => nav.classList.remove('active'));
             e.currentTarget.classList.add('active');
 
-            // 2. Manejar la visibilidad del contenido (Secciones)
             menuSections.forEach(section => {
                 section.classList.remove('active-menu');
             });
@@ -117,8 +115,6 @@ function inicializarCarrusel() {
         img.src = `img/${name}`;
         img.alt = `Foto de Tortería La Tortuga ${index + 1}`;
         img.classList.add('carousel-item');
-        // Usamos un estilo inline para el posicionamiento inicial
-        img.style.transform = `translateX(${(index - currentIndex) * 100}%)`; 
         carousel.appendChild(img);
     });
 
@@ -126,16 +122,18 @@ function inicializarCarrusel() {
     if (items.length === 0) return;
     const totalItems = items.length;
 
-    // Función para actualizar las clases y posiciones
+    // Función para actualizar las clases de visibilidad y posición
     function updateCarousel() {
         items.forEach((item, index) => {
+            // 1. Quitar todas las clases de visualización
             item.classList.remove('active', 'prev', 'next');
-            item.style.opacity = '0'; // Ocultar por defecto
+            item.style.opacity = '0'; 
 
-            // Calcular índices cíclicos
+            // 2. Calcular índices cíclicos
             const prevIndex = (currentIndex - 1 + totalItems) % totalItems;
             const nextIndex = (currentIndex + 1) % totalItems;
 
+            // 3. Aplicar las clases de visualización y opacidad
             if (index === currentIndex) {
                 item.classList.add('active');
                 item.style.opacity = '1';
@@ -146,6 +144,7 @@ function inicializarCarrusel() {
                 item.classList.add('next');
                 item.style.opacity = '1';
             }
+            // Los demás elementos quedan con opacity: 0 (ocultos)
         });
     }
 
@@ -167,7 +166,7 @@ function inicializarCarrusel() {
     // Carrusel automático cada 5 segundos
     setInterval(nextImage, 5000); 
 
-    // Inicializar mostrando las tres primeras imágenes
+    // Inicializar
     updateCarousel(); 
 }
 

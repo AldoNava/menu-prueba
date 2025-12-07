@@ -1,256 +1,30 @@
-/* Estilos Globales y Tipografía */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
-}
+/* ------------------------------ */
+/* 📍 Estilos para el Mapa (iFrame) */
+/* ------------------------------ */
 
-main {
-    padding: 20px 0;
+.map-container {
     max-width: 800px;
-    margin: 0 auto;
-}
-
-header {
+    margin: 40px auto;
+    padding: 0 20px;
     text-align: center;
-    padding: 20px;
-    background-color: #eee;
-    border-bottom: 2px solid #ccc;
 }
 
-/* 🖼️ AJUSTE DEL TAMAÑO DEL LOGO */
-.logo {
-    max-width: 250px; /* Incrementamos el tamaño del logo */
-    height: auto;
+.map-title {
+    color: #a00;
     margin-bottom: 15px;
 }
 
-h1, h2 {
-    color: #a00; 
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-top: 0;
-}
-
-h3 {
-    border-bottom: 2px solid #a00;
-    padding-bottom: 5px;
-    margin-top: 30px;
-    color: #555;
-    text-align: center; 
-}
-
-.subtitulo {
-    font-size: 0.8em;
-    font-weight: normal;
-    color: #777;
-}
-
-/* ------------------------------ */
-/* 🍔 Estilos del Menú Horizontal (Tabs) */
-/* ------------------------------ */
-#category-nav {
-    display: flex;
-    overflow-x: auto; 
-    white-space: nowrap;
-    background-color: #f0f0f0;
-    border-bottom: 2px solid #a00;
-    padding: 0 10px;
-}
-
-.nav-item {
+.map-container iframe {
+    /* Hace que el mapa ocupe el ancho total del contenedor en cualquier dispositivo */
     display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    border-right: 1px solid #ddd;
-    transition: background-color 0.3s;
-}
-
-.nav-item:last-child {
-    border-right: none;
-}
-
-.nav-item:hover {
-    background-color: #e0e0e0;
-}
-
-.nav-item.active {
-    background-color: #a00;
-    color: white;
-    border-bottom: 3px solid #ff9900; 
-}
-
-/* ------------------------------ */
-/* Lógica de Visibilidad de Menú */
-/* ------------------------------ */
-
-#menu-content {
-    padding: 0 20px; 
-}
-
-.categoria {
-    display: none; 
-    animation: fadeIn 0.5s;
-}
-
-.categoria.active-menu {
-    display: block; 
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-
-/* Estilos de las Listas de Menú */
-.categoria ul {
-    list-style: none;
-    padding: 0;
-}
-
-.categoria li {
-    padding: 10px 0;
-    border-bottom: 1px dashed #ddd;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; 
-}
-
-.item-nombre {
-    font-weight: bold;
-    flex-grow: 1; 
-    margin-right: 15px; 
-}
-
-.item-precio {
-    color: #a00;
-    font-weight: bold;
-    white-space: nowrap; 
-    text-align: right;
-}
-
-.item-descripcion, .item-tamaño {
-    font-size: 0.9em;
-    color: #777;
-    flex-basis: 100%; 
-    margin-top: 5px;
-}
-
-/* --------------------------------- */
-/* 🖼️ ESTILOS DEL CARRUSEL 3 IMÁGENES */
-/* --------------------------------- */
-
-#carousel-container {
-    position: relative; 
-    max-width: 700px; /* Aumentamos el tamaño para que quepan las 3 imágenes */
-    height: 350px;
-    margin: 40px auto;
-    overflow: hidden; 
-}
-
-#image-carousel {
-    display: flex;
-    position: relative;
     width: 100%;
-    height: 100%;
-    /* Habilitamos la perspectiva 3D */
-    transform-style: preserve-3d; 
-    perspective: 1000px;
-    /* Transición para el movimiento */
-    transition: transform 0.5s ease-in-out;
+    /* Añade un borde sutil */
+    border: 1px solid #ddd !important; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.carousel-item {
-    min-width: 100%; /* Cada elemento intenta ocupar el 100% (será sobreescrito por el JS/Transform) */
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    opacity: 0; /* Oculto por defecto */
-    transition: opacity 0.5s, transform 0.5s, box-shadow 0.5s;
-    border: 3px solid transparent;
-    border-radius: 8px;
-}
-
-/* Clase para la imagen activa (centro) */
-.carousel-item.active {
-    opacity: 1;
-    z-index: 10;
-    /* Movemos el elemento al centro (se manejará con JS) */
-    transform: translateX(0) scale(1.1); 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    border: 3px solid #a00; /* Borde rojo para destacar */
-}
-
-/* Clase para la imagen izquierda (anterior) */
-.carousel-item.prev {
-    opacity: 0.6;
-    z-index: 5;
-    /* Posición: Izquierda, Escala: Reducida, Transformación 3D para darle profundidad */
-    transform: translateX(-50%) scale(0.85) translateZ(-50px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-}
-
-/* Clase para la imagen derecha (próxima) */
-.carousel-item.next {
-    opacity: 0.6;
-    z-index: 5;
-    /* Posición: Derecha, Escala: Reducida, Transformación 3D para darle profundidad */
-    transform: translateX(50%) scale(0.85) translateZ(-50px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-}
-
-
-/* Estilos para los botones de navegación del carrusel */
-#prev-btn, #next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
-    border: none;
-    padding: 15px 20px; /* Botones más grandes */
-    cursor: pointer;
-    font-size: 2rem;
-    z-index: 20; /* Asegurar que estén por encima de las imágenes */
-    border-radius: 50%;
-    line-height: 1;
-}
-
-#prev-btn {
-    left: 0;
-}
-
-#next-btn {
-    right: 0;
-}
-
-#prev-btn:hover, #next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-
-/* Estilos de Contacto */
-footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 30px;
-    background-color: #333;
-    color: #fff;
-}
-
-footer a {
-    color: #ff9900;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
+.map-address {
+    font-weight: bold;
+    color: #555;
+    margin-top: 10px;
 }

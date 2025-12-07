@@ -1,0 +1,107 @@
+/* Estilos Globales y Tipografía */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #eee;
+    border-bottom: 2px solid #ccc;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+h1, h2 {
+    color: #a00; /* Color de acento (ej. rojo oscuro) */
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+h3 {
+    border-bottom: 2px solid #a00;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    color: #555;
+}
+
+.subtitulo {
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #777;
+}
+
+/* Estilos del Menú */
+.categoria ul {
+    list-style: none;
+    padding: 0;
+}
+
+.categoria li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+
+.item-nombre {
+    font-weight: bold;
+    flex-grow: 1; /* Permite que el nombre ocupe el espacio restante */
+    margin-right: 15px; /* Espacio antes del precio */
+}
+
+.item-precio {
+    color: #a00;
+    font-weight: bold;
+    white-space: nowrap; /* Evita que el precio se rompa en dos líneas */
+    text-align: right;
+}
+
+.item-descripcion, .item-tamaño {
+    font-size: 0.9em;
+    color: #777;
+    flex-basis: 100%; /* Ocupa todo el ancho en una nueva línea */
+    margin-top: 5px;
+}
+
+/* Estilos de Contacto */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #333;
+    color: #fff;
+}
+
+footer a {
+    color: #ff9900;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Media Query para tabletas y escritorios */
+@media (min-width: 600px) {
+    .categoria li {
+        padding: 10px 15px;
+    }
+}

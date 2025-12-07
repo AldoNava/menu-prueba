@@ -63,14 +63,14 @@ h3 {
 
 .item-nombre {
     font-weight: bold;
-    flex-grow: 1; /* Permite que el nombre ocupe el espacio restante */
-    margin-right: 15px; /* Espacio antes del precio */
+    flex-grow: 1; 
+    margin-right: 15px; 
 }
 
 .item-precio {
     color: #a00;
     font-weight: bold;
-    white-space: nowrap; /* Evita que el precio se rompa en dos líneas */
+    white-space: nowrap; 
     text-align: right;
 }
 
@@ -80,6 +80,71 @@ h3 {
     flex-basis: 100%; /* Ocupa todo el ancho en una nueva línea */
     margin-top: 5px;
 }
+
+/* ------------------------------ */
+/* Estilos para el Carrusel */
+/* ------------------------------ */
+#carousel-container {
+    position: relative; 
+    max-width: 600px;
+    height: 400px; /* Altura fija para el carrusel */
+    margin: 40px auto;
+    overflow: hidden; 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#image-carousel {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+    position: absolute; /* Permite superponer imágenes */
+    top: 0;
+    left: 0;
+    display: none; 
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; 
+}
+
+.carousel-item.active {
+    display: block; 
+    opacity: 1;
+}
+
+/* Estilos para los botones de navegación */
+#prev-btn, #next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 10;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+#prev-btn {
+    left: 10px;
+}
+
+#next-btn {
+    right: 10px;
+}
+
+#prev-btn:hover, #next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 
 /* Estilos de Contacto */
 footer {

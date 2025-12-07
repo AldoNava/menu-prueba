@@ -1,0 +1,107 @@
+{
+  "TORTAS_SENCILLAS": [
+    { "nombre": "Pastor", "precio_chica": 90, "precio_grande": 180 },
+    { "nombre": "Carnitas", "precio_chica": 90, "precio_grande": 180 },
+    { "nombre": "Chuleta", "precio_chica": 90, "precio_grande": 180 },
+    { "nombre": "Milanesa", "precio_chica": 90, "precio_grande": 180 },
+    { "nombre": "Pierna", "precio_chica": 90, "precio_grande": 180 },
+    { "nombre": "Huevo", "precio_chica": 60, "precio_grande": 120 },
+    { "nombre": "Salchicha", "precio_chica": 60, "precio_grande": 120 },
+    { "nombre": "Jamón", "precio_chica": 60, "precio_grande": 120 },
+    { "nombre": "Queso Blanco", "precio_chica": 60, "precio_grande": 120 },
+    { "nombre": "Queso de Puerco", "precio_chica": 60, "precio_grande": 120 },
+    { "nombre": "Chorizo", "precio_chica": 60, "precio_grande": 120 }
+  ],
+  "TORTAS_ESPECIALES": [
+    { "nombre": "Española", "precio": 100, "descripcion": "Chuleta ahumada, chorizo, piña y queso fundido. (Grande $200)" },
+    { "nombre": "Revoltosa", "precio": 100, "descripcion": "Milanesa, huevo y queso oaxaca. (Grande $200)" },
+    { "nombre": "Azteca", "precio": 100, "descripcion": "Carnitas, milanesa, chorizo y queso oaxaca. (Grande $200)" },
+    { "nombre": "Toluqueña", "precio": 100, "descripcion": "Piña, queso oaxaca y chorizo. (Grande $200)" },
+    { "nombre": "Alemana", "precio": 100, "descripcion": "Salchicha, tocino, queso oaxaca y queso amarillo. (Grande $200)" },
+    { "nombre": "Junior", "precio": 100, "descripcion": "Carnitas, jamón, queso blanco y chorizo. (Grande $200)" },
+    { "nombre": "Nais", "precio": 100, "descripcion": "Pierna, jamón, queso blanco y queso amarillo. (Grande $200)" },
+    { "nombre": "Telu", "precio": 100, "descripcion": "Pastor, jamón, carnitas, queso blanco, queso amarillo y pico de gallo. (Grande $200)" },
+    { "nombre": "Regia", "precio": 100, "descripcion": "Bistec de res, tocino, jamón, chorizo y queso oaxaca. (Grande $200)" },
+    { "nombre": "Monarca", "precio": 100, "descripcion": "Bistec de res, champiñones y queso oaxaca. (Grande $200)" },
+    { "nombre": "Arriera", "precio": 100, "descripcion": "Pastor, tocino, cebolla asada, piña y queso oaxaca. (Grande $200)" },
+    { "nombre": "Maya", "precio": 100, "descripcion": "Chuleta ahumada, tocino, champiñones y queso oaxaca. (Grande $200)" },
+    { "nombre": "Chikis", "precio": 100, "descripcion": "Jamón, queso oaxaca, chorizo y piña. (Grande $200)" },
+    { "nombre": "Vegetariana", "precio": 100, "descripcion": "Piña, champiñones, queso oaxaca y chile morrón. (Grande $200)" },
+    { "nombre": "Especial", "precio": 100, "descripcion": "Milanesa, jamón, queso blanco y queso de puerco. (Grande $200)" },
+    { "nombre": "Cubana", "precio": 100, "descripcion": "Salchicha, chorizo, jamón, queso panela y queso amarillo. (Grande $200)" },
+    { "nombre": "Chipocluda", "precio": 100, "descripcion": "Milanesa, jamón, queso panela y bastante chipotle. (Grande $200)" },
+    { "nombre": "Exclusiva", "precio": 150, "descripcion": "Milanesa, carnitas, jamón, queso de puerco, queso panela, pierna, salchicha, chorizo, huevo, queso amarillo, pastor y chuleta. (Grande $300)" },
+    { "nombre": "Chonchis", "precio": 100, "descripcion": "Carnitas, queso de puerco, queso blanco y chorizo. (Grande $200)" },
+    { "nombre": "La Mister", "precio": 100, "descripcion": "Milanesa, huevo, chorizo y queso oaxaca. (Grande $200)" },
+    { "nombre": "Queretana", "precio": 100, "descripcion": "Milanesa, carnitas, salchicha, pierna y queso oaxaca. (Grande $200)" },
+    { "nombre": "Hawaiana", "precio": 100, "descripcion": "Jamón, salchicha, queso amarillo, queso blanco y piña. (Grande $200)" },
+    { "nombre": "Quesada", "precio": 100, "descripcion": "Queso panela, queso oaxaca, queso amarillo y queso de puerco. (Grande $200)" },
+    { "nombre": "Mexicana", "precio": 100, "descripcion": "Milanesa, chorizo, queso amarillo y queso blanco. (Grande $200)" },
+    { "nombre": "Vanidosa", "precio": 100, "descripcion": "Milanesa, pierna y queso oaxaca. (Grande $200)" },
+    { "nombre": "La Favorita", "precio": 100, "descripcion": "Milanesa, pierna, queso blanco y queso amarillo. (Grande $200)" },
+    { "nombre": "La Rancherita", "precio": 100, "descripcion": "Pierna, queso oaxaca, queso amarillo, tocino y piña. (Grande $200)" },
+    { "nombre": "De Omelette", "precio": 100, "descripcion": "Huevo, jamón y queso oaxaca. (Grande $200)" },
+    { "nombre": "La Coqueta", "precio": 100, "descripcion": "Milanesa, jamón, queso amarillo, queso blanco y tocino. (Grande $200)" }
+  ],
+  "SINCRONIZADAS": [
+    { "nombre": "Sencilla", "precio": 50, "descripcion": "Jamón y queso oaxaca." },
+    { "nombre": "Empachada", "precio": 85, "descripcion": "Milanesa, queso de puerco, queso oaxaca, jamón y aguacate." },
+    { "nombre": "Hawaiana", "precio": 85, "descripcion": "Queso oaxaca, pastor, cebolla asada y piña." },
+    { "nombre": "Mexicana", "precio": 85, "descripcion": "Bistec de res, chorizo y queso oaxaca." },
+    { "nombre": "Quesadilla sencilla", "precio": 20, "descripcion": "Tortilla de harina doblada con queso oaxaca." }
+  ],
+  "TACOS": [
+    { "nombre": "Milanesa", "precio": 35 },
+    { "nombre": "Carnitas", "precio": 35 },
+    { "nombre": "Chorizo", "precio": 35 },
+    { "nombre": "Pastor", "precio": 35 }
+  ],
+  "HAMBURGUESAS": [
+    { "nombre": "Hamburguesa Sencilla", "precio": 100, "descripcion": "Carne de res, jamón, queso panela y queso amarillo." },
+    { "nombre": "Hamburguesa Hawaiana", "precio": 120, "descripcion": "Carne de res, tocino, piña, jamón, queso panela y queso amarillo." },
+    { "nombre": "Hamburguesa Colombiana", "precio": 140, "descripcion": "Carne de res, tocino, queso oaxaca, queso amarillo, champiñones y salsa chipotle." },
+    { "nombre": "Hot-Dog", "precio": 30, "descripcion": "Salchicha de pavo, jitomate, cebolla y aderezos." }
+  ],
+  "SANDWICH": [
+    { "nombre": "Milanesa", "precio": 85 },
+    { "nombre": "Pierna", "precio": 85 },
+    { "nombre": "Salchicha", "precio": 55 },
+    { "nombre": "Jamón", "precio": 55 },
+    { "nombre": "Queso Blanco", "precio": 55 },
+    { "nombre": "Queso de Puerco", "precio": 55 },
+    { "nombre": "Chorizo", "precio": 55 }
+  ],
+  "TOSTADAS": [
+    { "nombre": "Milanesa", "precio": 85 },
+    { "nombre": "Carnitas", "precio": 85 },
+    { "nombre": "Pierna", "precio": 85 },
+    { "nombre": "Chuleta Ahumada", "precio": 85 },
+    { "nombre": "Jamón", "precio": 55 },
+    { "nombre": "Queso Blanco", "precio": 55 },
+    { "nombre": "Queso de Puerco", "precio": 55 },
+    { "nombre": "Huevo", "precio": 55 },
+    { "nombre": "Chorizo", "precio": 55 }
+  ],
+  "BEBIDAS": [
+    { "nombre": "Refresco 600ml", "precio": 30 },
+    { "nombre": "Refresco Vidrio", "precio": 30 },
+    { "nombre": "Agua Natural", "precio": 15, "tamaño": "1/2 Litro" },
+    { "nombre": "Agua Natural", "precio": 25, "tamaño": "1 Litro" },
+    { "nombre": "Agua Natural de Sabor", "precio": 25, "tamaño": "1/2 Litro" },
+    { "nombre": "Agua Natural de Sabor", "precio": 40, "tamaño": "1 Litro" }
+  ],
+  "EXTRAS": [
+    { "nombre": "Salchicha", "precio": 10 },
+    { "nombre": "Chorizo", "precio": 10 },
+    { "nombre": "Jamón", "precio": 10 },
+    { "nombre": "Queso Oaxaca", "precio": 10 },
+    { "nombre": "Queso Panela", "precio": 10 },
+    { "nombre": "Pierna", "precio": 15 },
+    { "nombre": "Milanesa", "precio": 15 },
+    { "nombre": "Pastor", "precio": 15 },
+    { "nombre": "Carnitas", "precio": 15 },
+    { "nombre": "Chuleta Ahumada", "precio": 15 },
+    { "nombre": "Piña", "precio": 15 },
+    { "nombre": "Tocino", "precio": 15 }
+  ]
+}

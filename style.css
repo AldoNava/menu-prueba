@@ -1,9 +1,247 @@
+/* Estilos Globales y Tipografía */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+main {
+    /* Aumentamos el ancho máximo para pantallas grandes */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0; 
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #eee;
+    border-bottom: 2px solid #ccc;
+}
+
+/* AJUSTE DEL TAMAÑO DEL LOGO */
+.logo {
+    max-width: 250px; 
+    height: auto;
+    margin-bottom: 15px;
+}
+
+h1, h2 {
+    color: #a00; 
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+h3 {
+    border-bottom: 2px solid #a00;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    color: #555;
+    text-align: center; 
+}
+
+.subtitulo {
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #777;
+}
+
+/* --------------------------------- */
+/* 🍔 ESTILOS DEL MENÚ HORIZONTAL (TABS) */
+/* --------------------------------- */
+#category-nav {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan a la siguiente línea en vez de scroll */
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #a00;
+    padding: 0; /* Quitamos padding aquí para usarlo en el ítem */
+    justify-content: center; /* Centrar las opciones en escritorio */
+}
+
+.nav-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; /* Añadimos borde inferior para el modo wrap */
+    transition: background-color 0.3s;
+    flex-grow: 1; /* Permite que crezcan un poco para llenar el espacio */
+    text-align: center;
+}
+
+/* Corregimos el borde del último ítem en modo desktop */
+#category-nav a:last-child {
+    border-right: 1px solid #ddd;
+}
+#category-nav a:last-child:nth-child(2n) {
+    border-right: none;
+}
+
+
+.nav-item:hover {
+    background-color: #e0e0e0;
+}
+
+.nav-item.active {
+    background-color: #a00;
+    color: white;
+    border-bottom: 3px solid #ff9900 !important;
+}
+
+/* ------------------------------ */
+/* Lógica de Visibilidad de Menú */
+/* ------------------------------ */
+
+#menu-content {
+    padding: 0 20px; 
+}
+
+.categoria {
+    display: none; 
+    animation: fadeIn 0.5s;
+}
+
+.categoria.active-menu {
+    display: block; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Estilos de las Listas de Menú */
+.categoria ul {
+    list-style: none;
+    padding: 0;
+}
+
+.categoria li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+
+.item-nombre {
+    font-weight: bold;
+    flex-grow: 1; 
+    margin-right: 15px; 
+}
+
+.item-precio {
+    color: #a00;
+    font-weight: bold;
+    white-space: nowrap; 
+    text-align: right;
+}
+
+.item-descripcion, .item-tamaño {
+    font-size: 0.9em;
+    color: #777;
+    flex-basis: 100%; 
+    margin-top: 5px;
+}
+
+/* --------------------------------- */
+/* 🖼️ ESTILOS DEL CARRUSEL 3 IMÁGENES */
+/* --------------------------------- */
+
+#carousel-container {
+    max-width: 90%; /* Ajuste a porcentaje para móviles */
+    height: 350px;
+    margin: 40px auto;
+    overflow: hidden; 
+    position: relative; 
+}
+
+#image-carousel {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d; 
+    perspective: 1000px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    opacity: 0; 
+    transition: opacity 0.5s, transform 0.5s, box-shadow 0.5s;
+    border: 3px solid transparent;
+    border-radius: 8px;
+}
+
+.carousel-item.active {
+    opacity: 1;
+    z-index: 10;
+    transform: translateX(0) scale(1.1); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border: 3px solid #a00;
+}
+
+.carousel-item.prev {
+    opacity: 0.6;
+    z-index: 5;
+    transform: translateX(-50%) scale(0.85) translateZ(-50px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.carousel-item.next {
+    opacity: 0.6;
+    z-index: 5;
+    transform: translateX(50%) scale(0.85) translateZ(-50px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+/* Botones del carrusel */
+#prev-btn, #next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 15px 20px; 
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 20; 
+    border-radius: 50%;
+    line-height: 1;
+}
+
+#prev-btn {
+    left: 0;
+}
+
+#next-btn {
+    right: 0;
+}
+
+#prev-btn:hover, #next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
 /* ------------------------------ */
 /* 📍 Estilos para el Mapa (iFrame) */
 /* ------------------------------ */
-
 .map-container {
-    max-width: 800px;
+    max-width: 1200px; /* Incrementado para coincidir con main */
     margin: 40px auto;
     padding: 0 20px;
     text-align: center;
@@ -15,10 +253,8 @@
 }
 
 .map-container iframe {
-    /* Hace que el mapa ocupe el ancho total del contenedor en cualquier dispositivo */
     display: block;
     width: 100%;
-    /* Añade un borde sutil */
     border: 1px solid #ddd !important; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -27,4 +263,54 @@
     font-weight: bold;
     color: #555;
     margin-top: 10px;
+}
+
+/* ------------------------------ */
+/* 📱 MEDIA QUERY PARA MÓVILES */
+/* ------------------------------ */
+@media (max-width: 600px) {
+    
+    /* Evitar que el contenedor principal cause scroll */
+    main {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Ajuste para el contenido del menú */
+    #menu-content {
+        padding: 0 10px; /* Reducimos el padding lateral en móviles */
+    }
+
+    /* Botones de navegación horizontal (Tabs) en móviles */
+    #category-nav {
+        justify-content: start; /* Alinear a la izquierda */
+        padding: 0 5px;
+    }
+    
+    .nav-item {
+        /* En pantallas pequeñas, forzamos 3 items por fila */
+        flex-basis: calc(33.333% - 2px); 
+        box-sizing: border-box;
+        font-size: 0.9em;
+        padding: 8px 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    /* El último elemento no debe tener borde derecho en la fila */
+    .nav-item:nth-child(3n) {
+        border-right: none;
+    }
+
+    /* Ajuste del carrusel en móviles */
+    #carousel-container {
+        height: 300px; /* Altura más pequeña para móviles */
+        max-width: 95%;
+    }
+
+    /* Ajuste de botones del carrusel */
+    #prev-btn, #next-btn {
+        padding: 10px 15px;
+        font-size: 1.5rem;
+    }
+
 }

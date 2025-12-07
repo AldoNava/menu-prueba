@@ -9,7 +9,7 @@ body {
 }
 
 main {
-    padding: 20px;
+    padding: 20px 0; /* Ajuste el padding para que el menú de tabs sea visible */
     max-width: 800px;
     margin: 0 auto;
 }
@@ -28,7 +28,7 @@ header {
 }
 
 h1, h2 {
-    color: #a00; /* Color de acento (ej. rojo oscuro) */
+    color: #a00; 
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 0;
@@ -39,6 +39,7 @@ h3 {
     padding-bottom: 5px;
     margin-top: 30px;
     color: #555;
+    text-align: center; /* Centrar el título de la categoría */
 }
 
 .subtitulo {
@@ -47,7 +48,66 @@ h3 {
     color: #777;
 }
 
-/* Estilos del Menú */
+/* ------------------------------ */
+/* 🍔 Estilos del Menú Horizontal (Tabs) */
+/* ------------------------------ */
+#category-nav {
+    display: flex;
+    overflow-x: auto; /* Permite desplazamiento horizontal en móviles */
+    white-space: nowrap;
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #a00;
+    padding: 0 10px;
+}
+
+.nav-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    border-right: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.nav-item:last-child {
+    border-right: none;
+}
+
+.nav-item:hover {
+    background-color: #e0e0e0;
+}
+
+.nav-item.active {
+    background-color: #a00;
+    color: white;
+    border-bottom: 3px solid #ff9900; /* Borde de acento para la pestaña activa */
+}
+
+/* ------------------------------ */
+/* Lógica de Visibilidad */
+/* ------------------------------ */
+
+#menu-content {
+    padding: 0 20px; /* Padding para el contenido dentro de la main */
+}
+
+.categoria {
+    display: none; /* Oculta todas las categorías por defecto */
+    animation: fadeIn 0.5s;
+}
+
+.categoria.active-menu {
+    display: block; /* Muestra solo la categoría con la clase active-menu */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Estilos de las Listas de Menú */
 .categoria ul {
     list-style: none;
     padding: 0;
@@ -77,7 +137,7 @@ h3 {
 .item-descripcion, .item-tamaño {
     font-size: 0.9em;
     color: #777;
-    flex-basis: 100%; /* Ocupa todo el ancho en una nueva línea */
+    flex-basis: 100%; 
     margin-top: 5px;
 }
 
@@ -87,7 +147,7 @@ h3 {
 #carousel-container {
     position: relative; 
     max-width: 600px;
-    height: 400px; /* Altura fija para el carrusel */
+    height: 400px; 
     margin: 40px auto;
     overflow: hidden; 
     border: 1px solid #ddd;
@@ -103,11 +163,11 @@ h3 {
 .carousel-item {
     width: 100%;
     height: 100%;
-    position: absolute; /* Permite superponer imágenes */
+    position: absolute; 
     top: 0;
     left: 0;
     display: none; 
-    object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+    object-fit: cover; 
     opacity: 0;
     transition: opacity 0.5s ease-in-out; 
 }
@@ -117,7 +177,7 @@ h3 {
     opacity: 1;
 }
 
-/* Estilos para los botones de navegación */
+/* Estilos para los botones de navegación del carrusel */
 #prev-btn, #next-btn {
     position: absolute;
     top: 50%;

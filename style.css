@@ -305,27 +305,36 @@ h3 {
     bottom: 20px;
     right: 20px;
     background-color: #25D366; /* Verde de WhatsApp */
-    color: white; 
-    padding: 15px 25px;
-    font-weight: 900;
-    text-decoration: none;
-    border-radius: 50px; 
+
+    /* 💡 Cambios para hacerlo un círculo más pequeño */
+    width: 60px; /* Tamaño del círculo */
+    height: 60px; /* Tamaño del círculo */
+    padding: 0; /* Quitar padding */
+
+    display: flex; /* Para centrar la imagen */
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%; /* Hacerlo un círculo perfecto */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     z-index: 1000;
     animation: pulse 2s infinite; 
-    text-transform: uppercase;
+    transition: background-color 0.3s;
 }
 
 .floating-cta:hover {
     background-color: #128C7E; 
-    color: white;
-    text-decoration: none; /* Asegurar que no se subraya en hover */
 }
 
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.03); } 
     100% { transform: scale(1); }
+}
+
+.cta-icon-img {
+    width: 65%; /* La imagen ocupará el 65% del botón flotante (aprox 40px) */
+    height: auto;
 }
 
 /* --------------------------------- */
